@@ -1,5 +1,6 @@
 import torch.nn as nn
 
+
 class FCN(nn.Module):
     def __init__(self):
         super(FCN, self).__init__()
@@ -22,13 +23,13 @@ class FCN(nn.Module):
             nn.Conv2d(25, 25, kernel_size=(3, 3, 3), dilation=(1, 2, 2)),
             nn.Conv2d(25, 25, kernel_size=(3, 3, 3), dilation=(2, 4, 4))
         )
-       self.layer4 = nn.Sequential(
+        self.layer4 = nn.Sequential(
            nn.Conv2d(75, 75, kernel_size=(3, 3, 3), dilation=(2, 4, 4)),
            nn.Conv2d(75, 100, kernel_size=(3, 3, 3), dilation=(2, 4, 4)),
            nn.Conv2d(100, 100, kernel_size=(3, 3, 3), dilation=(2, 4, 4)),
            nn.Conv2d(100, 100, kernel_size=(3, 3, 3), dilation=(2, 4, 4)),
            nn.Conv2d(100, 2, kernel_size=(1, 1, 1))
-       )
+        )
 
     def forward(self,x):
         out1 = self.layer1(x)
